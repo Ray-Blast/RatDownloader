@@ -1,14 +1,11 @@
 """ File that actually handles the cringe ahh handling of the UX """
 import tkinter as tk
 import downloader as dl
-from tkinter import ttk
-
-user_url = "https://www.youtube.com/watch?v=_m9LHQjsGYM"
-user_path = "downloads"
 
 
 class App(tk.Frame):
     def __init__(self, master):
+        super().__init__(master)
         self.master = master
         self.frame = tk.Frame(self.master)
         self.title_label = tk.Label(self.frame, text="Download Video\n\n")
@@ -19,12 +16,12 @@ class App(tk.Frame):
 
         self.url_label = tk.Label(self.frame, text="URL:")
         self.url_label.pack()
-        self.url_entry = tk.Entry(self.frame, textvariable=self.url)
+        self.url_entry = tk.Entry(self.frame, textvariable=self.url, width=50)
         self.url_entry.pack()
 
         self.path_label = tk.Label(self.frame, text="Path:")
         self.path_label.pack()
-        self.path_entry = tk.Entry(self.frame, textvariable=self.path)
+        self.path_entry = tk.Entry(self.frame, textvariable=self.path, width=50)
         self.path_entry.pack()
 
         self.Download_Button = tk.Button(self.frame, text="Download", command=lambda: self.download_vid_button())
