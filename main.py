@@ -1,4 +1,4 @@
-# Rat DOwnloader
+# Rat Downloader (Rat DL)
 # Created by Ray Blast
 
 import RatGUI
