@@ -1,4 +1,5 @@
 """ File that actually handles the cringe ahh handling of the UX """
+from tkinter import filedialog
 import tkinter as tk
 import downloader as dl
 
@@ -21,8 +22,8 @@ class App(tk.Frame):
 
         self.path_label = tk.Label(self.frame, text="Path:")
         self.path_label.pack()
-        self.path_entry = tk.Entry(self.frame, textvariable=self.path, width=50)
-        self.path_entry.pack()
+        self.directory_button = tk.Button(self.frame, text="Set Directory", command=lambda: self.getDirectory())
+        self.directory_button.pack()
 
         self.Download_Button = tk.Button(self.frame, text="Download", command=lambda: self.download_vid_button())
         self.Download_Button.pack()
@@ -34,6 +35,10 @@ class App(tk.Frame):
 
         dl.downloadVideo(vid_url, vid_path)
         self.url.set("")
+
+    def getDirectory(self):
+        path_location = filedialog.askdirectory()
+        self.path.set(path_location)
 
 
 def run_app():
