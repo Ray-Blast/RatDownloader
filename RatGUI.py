@@ -4,6 +4,7 @@ import tkinter as tk
 import downloader as dl
 
 
+
 class App(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
@@ -26,12 +27,14 @@ class App(tk.Frame):
         self.url_entry.pack()
 
         self.path_label = tk.Label(self.frame, text="Path:")
-        self.path_label.pack()
+        self.path_label.pack(pady=(5,0))
         self.directory_button = tk.Button(self.frame, text="Set Directory", command=lambda: self.getDirectory())
         self.directory_button.pack()
 
         self.Download_Button = tk.Button(self.frame, text="Download", command=lambda: self.download_vid_button())
-        self.Download_Button.pack()
+        self.Download_Button.pack(padx=(0,0), pady=(50,0))
+        
+
         self.frame.pack()
 
     def download_vid_button(self):
