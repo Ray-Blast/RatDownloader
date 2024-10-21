@@ -9,11 +9,16 @@ class App(tk.Frame):
         super().__init__(master)
         self.master = master
         self.frame = tk.Frame(self.master)
-        self.title_label = tk.Label(self.frame, text="Download Video\n\n")
+        self.title_label = tk.Label(self.frame, text="Download\n\n")
         self.title_label.pack()
+
+        with open('savedPath.txt', 'r') as file:
+            spath = file.read().rstrip()
+        file.close()
 
         self.url = tk.StringVar()
         self.path = tk.StringVar()
+        self.path.set(spath)
 
         self.url_label = tk.Label(self.frame, text="URL:")
         self.url_label.pack()
@@ -37,8 +42,14 @@ class App(tk.Frame):
         self.url.set("")
 
     def getDirectory(self):
+        print(self.path.get())
         path_location = filedialog.askdirectory()
         self.path.set(path_location)
+        
+        if path_location != '':
+            with open('savedPath.txt', 'w') as file:
+                file.write(path_location)
+            file.close()
 
 
 def run_app():
